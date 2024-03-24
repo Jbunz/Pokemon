@@ -13,16 +13,16 @@ async function main() {
     } catch (error) {
         console.log('error connecting to database', error)
 
-        await getPokemon.deletMany()
-        await getPokemon()
 
     }
+    await Pokemon.deleteMany()
+    await getPokemon()
     console.log('end')
     process.exit(0)
 }
 
 async function getPokemon() {
-    const url = 'https://pokeapi.co/api/v2/pokemon?limit=50'
+    let url = 'https://pokeapi.co/api/v2/pokemon?limit=50'
 
     while (url) {
         const response = await fetch(url)
